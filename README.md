@@ -19,7 +19,7 @@ And then copy and paste the code into your child theme's functions.php or place 
 
 We welcome and encourage everyone to submit their code snippets. If you would like to submit your snippet, please [fork](https://github.com/rtMediaWP/library/fork) the repository and then create a [pull request](https://github.com/rtMediaWP/library/compare/).
 
-Please refer to the [Contributing guidelines](https://github.com/easydigitaldownloads/library/blob/master/CONTRIBUTING.md) before submitting your pull request.
+Please refer to the [Contributing guidelines](https://github.com/rtMediaWP/library/blob/develop/CONTRIBUTING.md) before submitting your pull request.
 
 ## Proposing a Snippet
 
