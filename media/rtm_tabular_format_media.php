@@ -1,7 +1,7 @@
 <?php
 /**
  * Add this function to theme's functions.php
- * Show medias in tabular format.
+ * Show media in tabular format.
  *
  * @param  bool $status  Status of function.
  * @return bool          Returns true tabular format is enabled from rtMedia settings.
