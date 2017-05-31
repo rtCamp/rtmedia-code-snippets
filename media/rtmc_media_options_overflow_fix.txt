@@ -1,6 +1,8 @@
 PHP
 =======================
 /**
+ * Add this to your theme's functions.php
+ *
  * Adds the theme slug as a class to the body.
  *
  * To fix the overflow issue, add the below function
@@ -17,6 +19,8 @@ add_filter( 'body_class', 'add_theme_slug_to_body_class' );
 CSS
 =======================
 /**
+ * Add this to ( rtMedia->settings->Custom CSS )
+ *
  * Fix for:
  * - Twentyten
  * - Twentyeleven
@@ -36,6 +40,8 @@ CSS
 }
 
 /**
+ * Add this to ( rtMedia->settings->Custom CSS )
+ *
  * Fix for:
  * - Twentythirteen
  * - Twentyfifteen
