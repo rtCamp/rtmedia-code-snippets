@@ -6,11 +6,11 @@
  */
 
 // Check if function doest not exists.
-if ( ! function_exists( 'rtm_remove_siteurl_from_activity' ) ) {
+if ( ! function_exists( 'rtmc_remove_siteurl_from_activity' ) ) {
 	/**
 	 * Remove link from activity url preview content.
 	 */
-	function rtm_remove_siteurl_from_activity() {
+	function rtmc_remove_siteurl_from_activity() {
 		?>
 		<script type="text/javascript">
 			jQuery( function($) {
@@ -38,7 +38,7 @@ if ( ! function_exists( 'rtm_remove_siteurl_from_activity' ) ) {
 		<?php
 	}
 }
-add_action( 'wp_footer', 'rtm_remove_siteurl_from_activity' );
+add_action( 'wp_footer', 'rtmc_remove_siteurl_from_activity' );
 ?>
 
 // Add this style to custom css ( rtMedia->settings->Custom CSS )

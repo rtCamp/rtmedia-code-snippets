@@ -1,0 +1,61 @@
+PHP
+=======================
+/**
+ * Add this to your theme's functions.php
+ *
+ * Adds the theme slug as a class to the body.
+ *
+ * To fix the overflow issue, add the below function
+ * at the end of the functions.php file.
+ *
+ * @param array $classes Array of body class.
+ */
+function add_theme_slug_to_body_class( $classes ) {
+	$classes[] = 'rtm-' . get_option( 'stylesheet' );
+	return $classes;
+}
+add_filter( 'body_class', 'add_theme_slug_to_body_class' );
+
+CSS
+=======================
+/**
+ * Add this to ( rtMedia->settings->Custom CSS )
+ *
+ * Fix for:
+ * - Twentyten
+ * - Twentyeleven
+ * - Twentyfourteen
+ */
+@media screen and (min-width: 800px) {
+	body.bp-user.rtm-twentyten #buddypress #item-body,
+	body.bp-user.rtm-twentyeleven #buddypress #item-body,
+	body.bp-user.rtm-twentyfourteen #buddypress #item-body {
+	    border-left: 1px solid #ddd;
+	    overflow: visible;
+	    padding: 0 0 0 25px;
+	    width: calc( 100% - 226px );
+		float: left;
+		margin-bottom: 4px;
+	}
+}
+
+/**
+ * Add this to ( rtMedia->settings->Custom CSS )
+ *
+ * Fix for:
+ * - Twentythirteen
+ * - Twentyfifteen
+ * - Twentyseventeen
+ */
+@media screen and (min-width: 800px) {
+	body.bp-user.rtm-twentythirteen #buddypress #item-body,
+	body.bp-user.rtm-twentyfifteen #buddypress #item-body,
+	body.bp-user.rtm-seventeen #buddypress #item-body {
+	    border-left: 1px solid #ddd;
+	    overflow: visible;
+	    padding: 0 0 0 25px;
+	    width: calc( 100% - 199px );
+		float: left;
+		margin-bottom: 4px;
+	}
+}
