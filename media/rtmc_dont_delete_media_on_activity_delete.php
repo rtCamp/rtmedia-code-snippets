@@ -7,6 +7,8 @@
  * @since 09/06/2017
  */
 function rtmc_dont_delete_from_media( $id ) {
-	die();
+	if ( bp_is_activity_component() ) {
+		die();
+	}
 }
 add_action( 'rtmedia_before_delete_media', 'rtmc_dont_delete_from_media' );
