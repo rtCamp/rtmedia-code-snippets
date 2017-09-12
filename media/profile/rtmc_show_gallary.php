@@ -20,5 +20,5 @@ function rtmc_show_gallary() {
 	$user_id = bp_displayed_user_id();
 	echo do_shortcode( '[rtmedia_gallery global="true" media_author="' . $user_id . '"]' );
 }
-add_action( 'bp_before_profile_field_content', 'rtmc_show_gallary' ); // For showing above prfile fileds.
+add_action( 'bp_before_profile_field_content', 'rtmc_show_gallary' ); // For showing above profile fields.
 add_action( 'bp_before_member_header', 'rtmc_show_gallary' ); // For showing above cover photo.
