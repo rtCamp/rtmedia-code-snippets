@@ -1,11 +1,13 @@
 <?php
 /**
+ * Add this function to theme's functions.php
+ *
  * Send failed notification mail to particular id.
  * By this filter two mail will be sent
  * 1. To site administrator
- * 2. To specified email id on line 17
+ * 2. To specified email id on line 19
  *
- * If you want to send mail only to administrator, then change line 17
+ * If you want to send mail only to administrator, then change line 19
  * to $email_ids = array();
  *
  * @param array  $email_ids Array of email ids.
