@@ -35,8 +35,10 @@
  	function rtm_group_uploader_func() {
  		// get current logged in user id.
  		$user_id = get_current_user_id();
+
  		// Get all logeed in user's groups.
- 		$user_groups = ( groups_get_user_groups( $user_id ) );
+ 		$user_groups = groups_get_user_groups( $user_id );
+    
  		$user_groups = $user_groups["groups"];
  ?>
  		<!-- Render Uploader -->
@@ -49,7 +51,7 @@
  					foreach( $user_groups as $group ) {
  						$groupObj = groups_get_group( array( 'group_id' => $group) );
  				?>
- 			<option value="<?php echo $group; ?>"> <?php echo esc_html( $groupObj->name ); ?> </option>
+ 			<option value="<?php echo esc_attr( $group ); ?>"> <?php echo esc_html( $groupObj->name ); ?> </option>
  				<?php
  					}
  				?>
@@ -65,11 +67,11 @@
 
  add_action( 'wp_footer', 'rtm_custom_group_uploader', 999 );
  /**
-  *
+  * Check if function is exist or not.
   */
  if ( ! function_exists( 'rtm_custom_group_uploader' ) ) {
  	/**
- 	 *
+ 	 * Enqueue jquery and add script to handle uploader.
  	 */
  	function rtm_custom_group_uploader() {
  		wp_enqueue_script( 'jquery' );
@@ -80,14 +82,14 @@
  				// Media uploader is hide by default whenever you render page.
  				$( '#multiple-group-uploader' ).hide();
  				// Chnage event of Select Group combobox.
- 				$('#select-group').change( function() {
+ 				$( '#select-group' ).change( function() {
  					// Get value of selected option in combbobox.
  					var id = $(this).val();
  					// Check if user select other than Select Group.
  					if ( id !== '-1' ) {
  						// Show uploader if user select other than `Select Group` option.
  						$( '#multiple-group-uploader' ).show();
- 						$('#multiple-group-uploader #rtmedia-uploader-form input[name=context_id]').val( id );
+ 						$( '#multiple-group-uploader #rtmedia-uploader-form input[name=context_id]' ).val( id );
  					}
  					else {
  						// Hide uploader if user select `Select Group` option.
