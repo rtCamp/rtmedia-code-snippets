@@ -1,42 +1,42 @@
 <?php
 /*
- * This snippets is allows you to upload the media in multiple groups in single page.
+ * This snippets allows you to upload the media to multiple BuddyPress groups from single page.
  *
- * Add this code snippet to theme's functions.php file
+ * Add this code snippet to your child theme's functions.php file
  *
- * Usage: Create page at admin site and put below shortcode in it.
+ * Usage: Once you use mentioned code to respected file, you can create WordPress page/post from dashboard and put below shortcode in it.
  * Shortcode: [rtmedia_group_uploader]
  * That's it.
  */
 
  add_action( 'init', 'rtm_shortcode_init' );
  /**
-  * Check if function is exists or not.
+  * Check if function exists.
   */
  if ( !function_exists( 'rtm_shortcode_init' ) ) {
  	/**
- 	 * Add shortcode onlly if user is logged in.
+ 	 * Add shortcode only if user is logged in.
  	 */
  	function rtm_shortcode_init() {
- 		// Condition for is user logged in or not
+ 		// Check if user is logged in or not
  		if ( is_user_logged_in() ) {
- 			// To add `rtmedia_group_uploader` shortcode
+ 			// Function call to add rtmedia_group_uploader shortcode
  			add_shortcode( 'rtmedia_group_uploader', 'rtm_group_uploader_func' );
  		}
  	}
  }
  /**
-  * Check if function is exists or not.
+  * Check if function exists.
   */
  if ( !function_exists( 'rtm_group_uploader_func' ) ) {
  	/**
- 	 * call for shortcode rtmedia_group_uploader.
+ 	 * This function will be called to render output of shortcode.
  	 */
  	function rtm_group_uploader_func() {
- 		// get current logged in user id.
+ 		// Get current logged-in user-id.
  		$user_id = get_current_user_id();
 
- 		// Get all logeed in user's groups.
+ 		// Get all logged-in user's groups.
  		$user_groups = groups_get_user_groups( $user_id );
     
  		$user_groups = $user_groups["groups"];
@@ -58,7 +58,7 @@
  		</select>
 
  		<div id="multiple-group-uploader">
- 			<!-- Call our rtmedia_uploader shortcode with some deffault arguments -->
+ 			<!-- Call rtmedia_uploader shortcode with desired parameters -->
  			<?php echo do_shortcode( '[rtmedia_uploader context=group context_id=-1 album_id=1 privacy=0]' ); ?>
  		</div>
  	<?php
@@ -67,7 +67,7 @@
 
  add_action( 'wp_footer', 'rtm_custom_group_uploader', 999 );
  /**
-  * Check if function is exist or not.
+  * Check if function exists.
   */
  if ( ! function_exists( 'rtm_custom_group_uploader' ) ) {
  	/**
@@ -79,20 +79,18 @@
  		<script>
  			var $ = jQuery;
  			$(document).ready( function() {
- 				// Media uploader is hide by default whenever you render page.
+ 				// To hide media uploader on page load.
  				$( '#multiple-group-uploader' ).hide();
- 				// Chnage event of Select Group combobox.
+ 				// Change event of Select Group combo-box.
  				$( '#select-group' ).change( function() {
- 					// Get value of selected option in combbobox.
+ 					// Get value of selected option in combo-box.
  					var id = $(this).val();
- 					// Check if user select other than Select Group.
+ 					// Check if user hasn't selected any group yet.
  					if ( id !== '-1' ) {
- 						// Show uploader if user select other than `Select Group` option.
  						$( '#multiple-group-uploader' ).show();
  						$( '#multiple-group-uploader #rtmedia-uploader-form input[name=context_id]' ).val( id );
  					}
  					else {
- 						// Hide uploader if user select `Select Group` option.
  						$( '#multiple-group-uploader' ).hide();
  					}
  				});
