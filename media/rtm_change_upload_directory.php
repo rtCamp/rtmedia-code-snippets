@@ -25,11 +25,19 @@ if ( ! function_exists( 'rtmedia_set_upload_path_to_post_id' ) ) {
 	 */
 	function rtmedia_set_upload_path_to_post_id( $param ) {
 
+		// Return as it is if $param is not array
+		if ( ! is_array( $param ) ) {
+			return $param;
+		}
+
+		// Get current post ID
+		$post_id = get_the_ID();
+
 		// Change parameters only if the URL is from rtMedia and `get_the_ID()` returns valid post ID.
-		if ( get_the_ID() && stripos( $param['url'], 'rtmedia' ) !== false ) {
-			$param['url']    .= '/' . get_the_ID();
-			$param['path']   .= '/' . get_the_ID();
-			$param['subdir'] .= '/' . get_the_ID();
+		if ( ! empty( $post_id ) && stripos( $param['url'], 'rtmedia' ) !== false ) {
+			$param['url']    .= '/' . $post_id;
+			$param['path']   .= '/' . $post_id;
+			$param['subdir'] .= '/' . $post_id;
 		}
 
 		return $param;
